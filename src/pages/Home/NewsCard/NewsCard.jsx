@@ -1,8 +1,10 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import { FaEye, FaRegBookmark, FaShareAlt } from "react-icons/fa";
+import { FaEye, FaRegBookmark, FaShareAlt,FaRegStar, FaStar } from "react-icons/fa";
 import Image from 'react-bootstrap/Image'
+import moment from "moment/moment";
+import Rating from "react-rating";
 
 const NewsCard = ({ news }) => {
   const { _id, title, rating, total_view, author, image_url, details } = news;
@@ -14,7 +16,7 @@ const NewsCard = ({ news }) => {
                 <Image style={{ height: '40px' }} src={author.img} roundedCircle/>
                 <div>
                 <p className="mb-0">{author.name}</p>
-                <p className="mb-0">{author.published_date}</p>
+                <p className="mb-0">{moment(author?.published_date).format('YYYY-MM-D')}</p>
                 </div>
             </div>
             <div>
@@ -37,8 +39,15 @@ const NewsCard = ({ news }) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted d-flex justify-content-between">
-            <div>
-
+            <div className="d-flex align-items-center gap-2">
+                <Rating
+                placeholderRating={rating?.number}
+                emptySymbol={<FaRegStar/>}
+                placeholderSymbol={<FaStar/>}
+                fullSymbol={<FaStar/>}
+                readonly
+                ></Rating>
+                <span>{rating?.number}</span>
             </div>
             <div>
                 <FaEye className="fs-5"/>

@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import HeaderNav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const HeaderNavbar = () => {
   return (
@@ -17,11 +18,11 @@ const HeaderNavbar = () => {
               <HeaderNav.Link href="#pricing">Career</HeaderNav.Link>
             </HeaderNav>
             <HeaderNav>
-              <HeaderNav.Link href="#deets">
+              <HeaderNav.Link href="#deets" className="d-flex align-items-center">
                <FaUserCircle className="icon-size"/>
               </HeaderNav.Link>
-              <HeaderNav.Link eventKey={2} href="#memes" className="btn btn-dark text-white fw-bold px-4">
-               Login
+              <HeaderNav.Link eventKey={2}>
+                <Link className="btn btn-dark text-white fw-bold px-4">Login</Link>
               </HeaderNav.Link>
             </HeaderNav>
           </Navbar.Collapse>
