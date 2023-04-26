@@ -14,16 +14,16 @@ const LeftNav = () => {
       <h4 className="mb-5">All Category</h4>
       <div className="ps-4">
         {categories.map((category) => (
-          <p key={category.id} className='mb-4'>
+          <div key={category.id} className='mb-4'>
             <NavLink
               className={({ isActive }) =>
-                isActive ? "bg-secondary bg-opacity-25 p-2 text-black" : "text-black text-decoration-none"
+                isActive ? "bg-secondary bg-opacity-25 p-3 text-black rounder text-decoration-none rounded" : "text-black text-decoration-none"
               }
               to={`/category/${category.id}`}
             >
               {category.name}
             </NavLink>
-          </p>
+          </div>
         ))}
       </div>
     </div>

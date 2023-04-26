@@ -3,6 +3,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import Marquee from 'react-fast-marquee';
 import logo from '../../../assets/logo.png'
+import HeaderNav from '../Nav/HeaderNavbar';
 
 const Header = () => {
     return (
