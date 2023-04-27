@@ -12,7 +12,7 @@ const LeftNav = () => {
   return (
     <div>
       <h4 className="mb-5">All Category</h4>
-      <div className="">
+      <div>
         {categories.map((category) => (
           <div key={category.id} className='mb-4'>
             <NavLink
