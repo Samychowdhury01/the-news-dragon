@@ -1,4 +1,5 @@
 import React from "react";
+import { Nav } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import HeaderNav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,24 +8,32 @@ import { Link } from "react-router-dom";
 
 const HeaderNavbar = () => {
   return (
-    <div>
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="mt-3">
+    <div className="bg-transparent">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="transparent"
+        variant="transparent"
+        className="pt-3"
+      >
         <Container>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <HeaderNav className="mx-auto">
-              <HeaderNav.Link href='/'>Home</HeaderNav.Link>
-              <HeaderNav.Link href="#pricing">About</HeaderNav.Link>
-              <HeaderNav.Link href="#pricing">Career</HeaderNav.Link>
-            </HeaderNav>
-            <HeaderNav>
-              <HeaderNav.Link href="#deets" className="d-flex align-items-center">
-               <FaUserCircle className="icon-size"/>
-              </HeaderNav.Link>
-              <HeaderNav.Link eventKey={2}>
-                <Link className="btn btn-dark text-white fw-bold px-4">Login</Link>
-              </HeaderNav.Link>
-            </HeaderNav>
+            <Nav className="mx-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="#pricing">About</Nav.Link>
+              <Nav.Link href="#pricing">Career</Nav.Link>
+            </Nav>
+            <Nav>
+              <Nav.Link className="d-flex align-items-center">
+                <FaUserCircle className="icon-size" />
+              </Nav.Link>
+              <Nav.Link eventKey={2}>
+                <Link to="/login" className="btn btn-dark text-white fw-bold px-4">
+                  Login
+                </Link>
+              </Nav.Link>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -33,3 +42,4 @@ const HeaderNavbar = () => {
 };
 
 export default HeaderNavbar;
+

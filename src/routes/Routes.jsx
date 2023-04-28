@@ -1,37 +1,75 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
-import NewsLayout from "../layouts/NewsLayout";
 import Category from "../pages/Home/Category/Category";
-import Home from "../pages/Home/Home/Home";
+import NewsLayout from "../layouts/NewsLayout";
 import News from "../pages/News/News/News";
+import LoginLayout from "../layouts/LoginLayout";
+import Login from "../pages/Login/Login/Login";
+import Register from "../pages/Login/Register/Register";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <LoginLayout></LoginLayout>,
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: <Navigate to="/category/0"></Navigate>,
       },
       {
-        path: "/category/:id",
-        element: <Category/>,
-        loader : ({params}) => fetch(`http://localhost:3000/categories/${params.id}`)
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "category",
+    element: <Main></Main>,
+    children: [
+      {
+        path: ":id",
+        element: <Category></Category>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/categories/${params.id}`),
       },
     ],
   },
   {
     path: "news",
-    element: <NewsLayout/>,
-    children:[
+    element: <NewsLayout></NewsLayout>,
+    children: [
       {
-        path: ':id',
-        element: <News/>,
-        loader : ({params}) => fetch(`http://localhost:3000/news/${params.id}`)
-      }
-    ]
-  }
+        path: ":id",
+        element: <News></News>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/news/${params.id}`),
+      },
+    ],
+  },
+  {
+    path: "login",
+    element: <LoginLayout></LoginLayout>,
+    children: [
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+    ],
+  },
+  {
+    path: "register",
+    element: <LoginLayout></LoginLayout>,
+    children: [
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
+  },
 ]);
 
 export default router;
